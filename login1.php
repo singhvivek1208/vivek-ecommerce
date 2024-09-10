@@ -1,5 +1,5 @@
  <?php
- session_start();
+ session_start(); 
  $con = mysqli_connect("localhost","root","","ecommerce");
  if(isset($_POST['sub'])){
     $user=$_POST['Email'];
