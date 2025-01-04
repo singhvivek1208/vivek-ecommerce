@@ -1,11 +1,11 @@
  <?php
  session_start(); 
- $con = mysqli_connect("localhost","root","","1Ecommerce");
+ $con = mysqli_connect("localhost","root","","ecommerce_users");
  if(isset($_POST['sub'])){
-    $user=$_POST['Email'];
-    $password=$_POST['Password'];
-    $query= mysqli_query($con,"select * from users where Email = '$user' and Password= '$password'");
-    $qury= mysqli_query($con,"select * from admin where Email = '$user' and Password= '$password'");
+    $user=$_POST['email'];
+    $pass=$_POST['password'];
+    $query= mysqli_query($con,"select * from users where email = '$user' and password= '$pass'");
+    $qury= mysqli_query($con,"select * from admin where email = '$user' and password= '$pass'");
    if($query || $qury) {
     if($exe = mysqli_fetch_array($query)){
         $_SESSION['name'] = $exe['name'];
@@ -46,7 +46,6 @@ in other input type*/
   flex-wrap: nowrap;
   flex-direction: column;
   gap: 1em;
-  
 }
 
 .input-container {
@@ -300,15 +299,15 @@ in other input type*/
 
  </style>
  <body>
- 
+ <img class="img1" src="assets/images/logo.png" >
 <form class="container" action="" method="POST">
   <div class="input-container">
     <div class="input-content">
       <div class="input-dist">
         <div class="input-type">
-          <input class="input-is" type="text" name="Email" required="" placeholder="User" />
+          <input class="input-is" type="text" name="email" required="" placeholder="Enter Email" />
           <input
-          name="Password"
+          name="password"
             class="input-is"
             type="password"
             required=""
