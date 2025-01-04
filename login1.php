@@ -1,6 +1,6 @@
  <?php
  session_start(); 
- $con = mysqli_connect("localhost","root","","ecommerce");
+ $con = mysqli_connect("localhost","root","","1Ecommerce");
  if(isset($_POST['sub'])){
     $user=$_POST['Email'];
     $password=$_POST['Password'];
@@ -8,13 +8,13 @@
     $qury= mysqli_query($con,"select * from admin where Email = '$user' and Password= '$password'");
    if($query || $qury) {
     if($exe = mysqli_fetch_array($query)){
-        $_SESSION['name'] = $exe['Name'];
+        $_SESSION['name'] = $exe['name'];
         echo "<script>alert('User Found')</script>";
         header("location: index.php");
     }else if($nxe = mysqli_fetch_array($qury)){
-        $_SESSION['name'] = $nxe['Name'];
+        $_SESSION['name'] = $nxe['name'];
         echo "<script>alert('User Found')</script>";
-        header("location: Admin.php");
+        header("location: admin/pages/dashboard.php");
    }else{ echo "<script>alert('user not found')</script> ";}
 }}
 ?> 

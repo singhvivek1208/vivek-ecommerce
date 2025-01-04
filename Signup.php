@@ -1,6 +1,6 @@
 <?php
-$con = mysqli_connect("localhost","root","","ecommerce");
-$qury= mysqli_query($con, "select * from Users ");
+$con = mysqli_connect("localhost","root","","1ecommerce");
+$qury= mysqli_query($con, "select * from users ");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,12 +68,19 @@ button:hover {
 </style>
 <body>
 <?php
-    if(isset($_POST['sub'])){
-        $name=$_POST['Name']; 
-        $email=$_POST['Email'];
-        $password=$_POST['Password'];
+   if(isset($_POST['sub'])){
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $num=$_POST['mobile_No'];
+    $pass=$_POST['password'];
+    
+    $urname =substr($name, 0, 3);
+    $uremail =substr($email, 0, 5);
+    $urpass =substr($pass, 0, 2);
+    $urnum =substr($num, 0, 2);
+    $username = $urname . $uremail . $urpass . $urnum ;
 
-        $query= mysqli_query($con,"insert into Users (Name,Email,Password ) values ('$name','$email','$password')");
+        $query= mysqli_query($con,"INSERT INTO users (name,email,mobile_No,password,username ) values ('$name','$email','$num','$pass','$username')");
     }
     ?>
   
@@ -83,15 +90,19 @@ button:hover {
             
             <div class="form-group">
                 <label for="username">Name:</label>
-                <input type="text" id="name" name="Name" required>
+                <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
                 <label for="email">Email_id:</label>
-                <input type="email" id="email" name="Email" required>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="pass" name="Password" required>
+                <input type="password" id="pass" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile_No">Mobile_No:</label>
+                <input type="text" id="num" name="mobile_No" required>
             </div>
             <button type="submit" name="sub">Sign Up</button>
         </form>

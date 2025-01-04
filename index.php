@@ -2,7 +2,10 @@
 <html lang="en">
 
   <head>
-
+ <?php
+ session_start();
+ if (isset($_SESSION['name'])){
+ ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -62,7 +65,12 @@ https://templatemo.com/tm-571-hexashop
                             <li class="scroll-to-section"><a href="#women">Women's</a></li>
                             <li class="scroll-to-section"><a href="#kids">Kid's</a></li>
                             
+                            
                             <li class="scroll-to-section"><a href="#explore">Explore</a></li>
+                            <h2 class="name12" >
+                            <?php
+                            echo $_SESSION['name'];
+                            ?></h2>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -824,6 +832,8 @@ https://templatemo.com/tm-571-hexashop
         });
 
     </script>
-
+<?php
+}
+?>
   </body>
 </html>
